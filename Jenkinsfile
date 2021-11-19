@@ -9,12 +9,6 @@ pipeline {
 				git 'https://github.com/sebastiankzk/JenkinsDependencyCheckTest'
 			}
 		}
-		stage('Build') {
-		    	steps {
-				sh 'npm install'
-		    	}
-		}   
-
 		stage('OWASP DependencyCheck') {
 			steps {
 				dependencyCheck additionalArguments: '--format HTML --format XML', odcInstallation: 'OWASP-Dependency-Check'
