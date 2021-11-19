@@ -1,11 +1,19 @@
 pipeline {
 	agent any
+    	environment {
+        	CI = 'true'
+    	}
 	stages {
 		stage('Checkout SCM') {
 			steps {
 				git 'https://github.com/sebastiankzk/JenkinsDependencyCheckTest'
 			}
 		}
+		stage('Build') {
+		    	steps {
+				sh 'npm install'
+		    	}
+		}   
 
 		stage('OWASP DependencyCheck') {
 			steps {
